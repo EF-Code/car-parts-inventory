@@ -73,3 +73,23 @@ def edit_item(id):
     item = cur.fetchone()
     cur.close()
     return render_template('edit_item.html', item=item)
+
+@app.route('/update')
+def update_inventory():
+    search = request.args.get('search')
+    cur = mysql.connection.cursor()
+    if search:
+        cur.execute("SELECT * FROM items WHERE name LIKE %s", ('%' + search + '%',))
+    else:
+        cur.execute("SELECT * FROM items")
+    items = cur.fetchall()
+    cur.close()
+    return render_template('update_list.html', items=items, search_query=search or "")
+
+@app.route('/delete')
+def delete_part():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM items")
+    items = cur.fetchall()
+    cur.close()
+    return render_template('delete_item.html', items=items)
