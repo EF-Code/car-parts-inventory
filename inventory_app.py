@@ -93,3 +93,14 @@ def delete_part():
     items = cur.fetchall()
     cur.close()
     return render_template('delete_item.html', items=items)
+
+@app.route('/delete_item/<int:id>', methods=['POST'])
+def delete_item(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM items WHERE id=%s", (id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('delete_part'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
