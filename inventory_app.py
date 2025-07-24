@@ -40,3 +40,36 @@ def add_item():
         cur.close()
         return redirect(url_for('view_inventory'))
     return render_template('add_item.html')
+
+@app.route('/inventory')
+def view_inventory():
+    search = request.args.get('search')
+    cur = mysql.connection.cursor()
+    if search:
+        cur.execute("SELECT * FROM items WHERE name LIKE %s", ('%' + search + '%',))
+    else:
+        cur.execute("SELECT * FROM items")
+    items = cur.fetchall()
+    cur.close()
+    return render_template('view_inventory.html', items=items)
+
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit_item(id):
+    cur = mysql.connection.cursor()
+    if request.method == 'POST':
+        name = request.form['name']
+        material = request.form['material']
+        quantity = request.form['quantity']
+        sales_price = request.form['sales_price']
+        purchase_price = request.form['purchase_price']
+
+        cur.execute("UPDATE items SET name=%s, material=%s, quantity=%s, sales_price=%s, purchase_price=%s WHERE id=%s",
+                    (name, material, quantity, sales_price, purchase_price, id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('view_inventory'))
+
+    cur.execute("SELECT * FROM items WHERE id=%s", (id,))
+    item = cur.fetchone()
+    cur.close()
+    return render_template('edit_item.html', item=item)
