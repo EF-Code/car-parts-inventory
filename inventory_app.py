@@ -23,3 +23,20 @@ def dashboard():
     recent = cur.fetchall()
     cur.close()
     return render_template('dashboard.html', total=total_items, low_stock=low_stock, recent=recent)
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_item():
+    if request.method == 'POST':
+        name = request.form['name']
+        material = request.form['material']
+        quantity = request.form['quantity']
+        sales_price = request.form['sales_price']
+        purchase_price = request.form['purchase_price']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO items (name, material, quantity, sales_price, purchase_price) VALUES (%s, %s, %s, %s, %s)",
+                    (name, material, quantity, sales_price, purchase_price))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('view_inventory'))
+    return render_template('add_item.html')
