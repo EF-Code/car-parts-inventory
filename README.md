@@ -17,7 +17,21 @@ A simple web-based Inventory Management System built using **Flask**, and **MySQ
 ---
 
 ## 🖼️ Screenshots
+### Dashboard
+<img width="1900" height="984" alt="Screenshot From 2025-07-25 00-39-57" src="https://github.com/user-attachments/assets/6a56d5cb-b461-4efb-825a-42c7cb1274c3" />
 
+### Add Part
+<img width="1901" height="1043" alt="Screenshot From 2025-07-25 00-40-39" src="https://github.com/user-attachments/assets/0b17417c-6167-4fce-a301-0219401936fe" />
+
+### View Inventory
+<img width="1901" height="1043" alt="Screenshot From 2025-07-25 00-40-50" src="https://github.com/user-attachments/assets/8b879706-8329-488c-9635-9972a174c422" />
+
+### Update Inventory
+<img width="1901" height="1043" alt="Screenshot From 2025-07-25 00-41-00" src="https://github.com/user-attachments/assets/46a41d93-c50e-4add-8753-b077e2f2553e" />
+
+### Delete Parts
+
+<img width="1901" height="1043" alt="Screenshot From 2025-07-25 00-41-08" src="https://github.com/user-attachments/assets/c5aa7dbe-2a61-4cb0-a6e5-008f88767202" />
 
 
 
