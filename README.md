@@ -101,5 +101,5 @@ Visit `http://127.0.0.1:5000` in your browser.
 | [Gidado](https://github.com/gidadojnr)     | Created view_inventory and edit_item functions                                                                |
 | [Apochi](https://github.com/emm847)        | Created delete parts                                                                                          |
 | [Henry](https://github.com/kingdavida001)  | Created update_list and delete_item                                                                           |
-
+| [Suleiman](https://github.com/suleiman108) | Edited README            |
 
